@@ -3,9 +3,6 @@ import 'phaser';
 import { SceneMainMenu } from './scenes/SceneMainMenu';
 import { SceneMain} from './scenes/SceneMain';
 import { SceneGameOver} from './scenes/SceneGameOver';
-// import { Entities, Player} from './GameObject/Entities';
-
-// import {SimpleScene} from './scenes/simple-scene'
 
 const gameConfig = {
   type: Phaser.AUTO,

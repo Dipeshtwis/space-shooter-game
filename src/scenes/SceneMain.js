@@ -1,34 +1,54 @@
-import {Entity, Player} from '../GameObject/Entities';
+import sprBg0 from "../content/sprBg0.png";
+import sprBg1 from "../content/sprBg1.png";
+import sprEnemy0 from "../content/sprEnemy0.png";
+import sprEnemy1 from "../content/sprEnemy1.png";
+import sprLaserEnemy0 from "../content/sprLaserEnemy0.png";
+import sprLaserPlayer from "../content/sprLaserPlayer.png";
+import sprPlayer from "../content/sprPlayer.png";
+import sprExplosion from "../content/sprExplosion.png";
 
-export class SceneMain extends Phaser.Scene {
+import sprEnemy2 from "../content/sprEnemy2.png";
+
+import sndExplode0 from "../content/sndExplode0.wav";
+import sndExplode1 from "../content/sndExplode0.wav";
+import sndLaser from "../content/sndLaser.wav";
+
+import Player from "../GameObject/Player";
+
+class SceneMain extends Phaser.Scene {
   constructor() {
     super({ key: "SceneMain" });
   }
   preload() {
-  	this.load.image("sprBg0", "content/sprBg0.png");
-  	this.load.image("sprBg1", "content/sprBg1.png");
-	this.load.spritesheet("sprExplosion", "content/sprExplosion.png", {
-	  frameWidth: 32,
-	  frameHeight: 32
-	});
-	this.load.spritesheet("sprEnemy0", "content/sprEnemy0.png", {
-	  frameWidth: 16,
-	  frameHeight: 16
-	});
-	this.load.image("sprEnemy1", "content/sprEnemy1.png");
-	this.load.spritesheet("sprEnemy2", "content/sprEnemy2.png", {
-	  frameWidth: 16,
-	  frameHeight: 16
-	});
-	this.load.image("sprLaserEnemy0", "content/sprLaserEnemy0.png");
-	this.load.image("sprLaserPlayer", "content/sprLaserPlayer.png");
-	this.load.spritesheet("sprPlayer", "content/sprPlayer.png", {
-	  frameWidth: 16,
-	  frameHeight: 16
-	});
-	this.load.audio("sndExplode0", "content/sndExplode0.wav");
-	this.load.audio("sndExplode1", "content/sndExplode1.wav");
-	this.load.audio("sndLaser", "content/sndLaser.wav");
+	this.load.image("sprBg0", sprBg0);
+    this.load.image("sprBg1", sprBg1);
+    this.load.image("sprEnemy1", sprEnemy1);
+    this.load.image("sprLaserEnemy0", sprLaserEnemy0);
+    this.load.image("sprLaserPlayer", sprLaserPlayer);
+
+    this.load.spritesheet("sprExplosion", sprExplosion, {
+      frameWidth: 32,
+      frameHeight: 32
+    });
+
+    this.load.spritesheet("sprEnemy0", sprEnemy0, {
+      frameWidth: 16,
+      frameHeight: 16
+    });
+
+    this.load.spritesheet("sprEnemy2", sprEnemy2, {
+      frameWidth: 16,
+      frameHeight: 16
+    });
+
+    this.load.spritesheet("sprPlayer", sprPlayer, {
+      frameWidth: 16,
+      frameHeight: 16
+    });
+
+    this.load.audio("sndExplode0", sndExplode0);
+    this.load.audio("sndExplode1", sndExplode1);
+    this.load.audio("sndLaser", sndLaser);
   }
 
   create() {
@@ -94,3 +114,5 @@ export class SceneMain extends Phaser.Scene {
 	}
   }
 }
+
+export default SceneMain;

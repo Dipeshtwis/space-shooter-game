@@ -22,7 +22,14 @@ module.exports = {
             presets: ['env']
           }
         }
-      }
+      },
+      {
+      	test: /\.(jpg|JPG|jpeg|png|gif|mp3|svg|ttf|woff2|woff|eot)$/gi,
+      	type: 'asset/resource',
+      },
+      {
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      },
     ]
   },
   devServer: {
