@@ -1,8 +1,8 @@
-import 'phaser';
+import Phaser from 'phaser';
 
-import { SceneMainMenu } from './scenes/SceneMainMenu';
-import { SceneMain} from './scenes/SceneMain';
-import { SceneGameOver} from './scenes/SceneGameOver';
+import SceneMainMenu from './scenes/SceneMainMenu';
+import SceneMain from './scenes/SceneMain';
+import SceneGameOver from './scenes/SceneGameOver';
 
 const gameConfig = {
   type: Phaser.AUTO,
@@ -18,7 +18,7 @@ const gameConfig = {
   scene: [
   SceneMainMenu,
   SceneMain,
-  SceneGameOver,
+  SceneGameOver
   ],
   pixelArt: true,
   roundPixels: true
