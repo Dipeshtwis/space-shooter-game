@@ -1,4 +1,4 @@
-class Entity extends Phaser.GameObjects.Sprite {
+export class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, key, type) {
     super(scene, x, y, key);
     this.scene = scene;
@@ -9,7 +9,7 @@ class Entity extends Phaser.GameObjects.Sprite {
   }
 }
 
-class Player extends Entity {
+export class Player extends Entity {
 	constructor(scene, x, y, key){
 		super(scene, x, y, key, "player");
 		this.setData("speed", 200);
