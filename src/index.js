@@ -7,7 +7,7 @@ import SceneGameOver from './scenes/SceneGameOver';
 const gameConfig = {
   type: Phaser.AUTO,
   width: 480,
-  height: 640,
+  height: 630,
   backgroundColor: "black",
   physics: {
     default: "arcade",
