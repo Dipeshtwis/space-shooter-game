@@ -1,12 +1,27 @@
 import 'phaser';
 
-import { SimpleScene } from './scenes/simple-scene';
+import { SceneMainMenu } from './scenes/SceneMainMenu';
+import { SceneMain} from './scenes/SceneMain';
+import { SceneGameOver} from './scenes/SceneGameOver';
 
 const gameConfig = {
-  width: 680,
-  height: 400,
-  scene: SimpleScene
+  type: Phaser.WEBGL,
+  width: 480,
+  height: 640,
+  backgroundColor: "black",
+  physics: {
+    default: "arcade",
+    arcade: {
+      gravity: { x: 0, y: 0 }
+    }
+  },
+  scene: [
+  SceneMainMenu,
+  SceneMain,
+  SceneGameOver],
+  pixelArt: true,
+  roundPixels: true
 };
 
-new Phaser.Game(gameConfig);
+const game = new Phaser.Game(gameConfig);
 
