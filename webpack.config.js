@@ -24,11 +24,12 @@ module.exports = {
         }
       },
       {
-      	test: /\.(jpg|JPG|jpeg|png|gif|mp3|svg|ttf|woff2|woff|eot)$/gi,
-      	type: 'asset/resource',
+      	test: /\.(png|jpe?g|gif)$/i,
+      	loader: 'file-loader',
       },
       {
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: 'file-loader',
       },
     ]
   },
@@ -44,11 +45,7 @@ module.exports = {
       {
         from: path.resolve(__dirname, 'index.html'),
         to: path.resolve(__dirname, 'build')
-      }// },
-      // {
-      //   from: path.resolve(__dirname, 'assets', '**', '*'),
-      //   to: path.resolve(__dirname, 'build')
-      // }
+      }
     ]
   }),
     new webpack.DefinePlugin({
