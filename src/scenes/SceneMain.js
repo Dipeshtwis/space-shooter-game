@@ -99,6 +99,7 @@ class SceneMain extends Phaser.Scene {
   this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
   this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
   this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+  this.keyB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.B);
   this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
   }
@@ -112,6 +113,9 @@ class SceneMain extends Phaser.Scene {
 	else if (this.keyS.isDown) {
 	  this.player.moveDown();
 	}
+  else if(this.keyB.isDown){
+    this.player.BoostUp();
+  }
 
 	if (this.keyA.isDown) {
 	  this.player.moveLeft();

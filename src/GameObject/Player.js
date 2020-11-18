@@ -4,6 +4,7 @@ class Player extends Entity {
 	constructor(scene, x, y, key){
 		super(scene, x, y, key, "player");
 		this.setData("speed", 200);
+		this.setData("speedBoost", 300);
 		this.play("sprPlayer");
 	}
 	moveUp() {
@@ -20,6 +21,10 @@ class Player extends Entity {
 
 	moveRight() {
       this.body.velocity.x = this.getData("speed");
+	}
+
+	BoostUp() {
+      this.body.velocity.y = -this.getData("speedBoost");
 	}
 
 	update(){
