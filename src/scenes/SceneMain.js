@@ -144,9 +144,19 @@ class SceneMain extends Phaser.Scene {
       this.enemies.add(enemy);
     }
   },
-  callbackScope: this,
-  loop: true
-});
+    callbackScope: this,
+    loop: true
+  });
+
+  this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
+    if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+        enemy.explode(true);
+        playerLaser.destroy();
+      }
+  });
 
   }
 
@@ -195,7 +205,17 @@ class SceneMain extends Phaser.Scene {
           enemy.destroy();
         }
       }
+
+      this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+        if (!player.getData("isDead") &&
+            !enemy.getData("isDead")) {
+          player.explode(false);
+          enemy.explode(true);
+        }
+      });
     }
+
+    
 
     for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
         var laser = this.enemyLasers.getChildren()[i];
@@ -209,6 +229,14 @@ class SceneMain extends Phaser.Scene {
             laser.destroy();
           }
         }
+
+        this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
+          if (!player.getData("isDead") &&
+              !laser.getData("isDead")) {
+            player.explode(false);
+            laser.destroy();
+          }
+        });
       }
 
     for (var i = 0; i < this.playerLasers.getChildren().length; i++) {
