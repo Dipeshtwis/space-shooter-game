@@ -9,8 +9,8 @@ class GunShip extends Entity {
 
     this.shootTimer = this.scene.time.addEvent({
 	  delay: 1000,
-	  callback: function() {
-	    var laser = new EnemyLaser(
+	  callback: () => {
+	    let laser = new EnemyLaser(
 	      this.scene,
 	      this.x,
 	      this.y

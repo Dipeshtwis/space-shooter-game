@@ -46,35 +46,35 @@ class SceneGameOver extends Phaser.Scene {
     );
     this.btnRestart.setInteractive();
 
-    this.btnRestart.on("pointerover", function() {
+    this.btnRestart.on("pointerover", () => {
       this.btnRestart.setTexture("sprBtnRestartHover");
       this.sfx.btnOver.play();
     }, this);
 
-    this.btnRestart.on("pointerout", function() {
+    this.btnRestart.on("pointerout", () => {
       this.setTexture("sprBtnRestart");
     });
 
-    this.btnRestart.on("pointerdown", function() {
+    this.btnRestart.on("pointerdown", () => {
       this.btnRestart.setTexture("sprBtnRestartDown");
       this.sfx.btnDown.play();
     }, this);
 
-    this.btnRestart.on("pointerup", function() {
+    this.btnRestart.on("pointerup", () => {
       this.btnRestart.setTexture("sprBtnRestart");
       this.scene.start("SceneMain");
     }, this);
 
     this.backgrounds = [];
-	for (var i = 0; i < 5; i++) {
-	  var keys = ["sprBg0", "sprBg1"];
-	  var key = keys[Phaser.Math.Between(0, keys.length - 1)];
-	  var bg = new ScrollingBackground(this, key, i * 10);
+	for (let i = 0; i < 5; i++) {
+	  let keys = ["sprBg0", "sprBg1"];
+	  let key = keys[Phaser.Math.Between(0, keys.length - 1)];
+	  let bg = new ScrollingBackground(this, key, i * 10);
 	  this.backgrounds.push(bg);
 	}
   }
   update() {
-    for (var i = 0; i < this.backgrounds.length; i++) {
+    for (let i = 0; i < this.backgrounds.length; i++) {
       this.backgrounds[i].update();
     }
   }

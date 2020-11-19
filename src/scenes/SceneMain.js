@@ -123,7 +123,7 @@ class SceneMain extends Phaser.Scene {
 
   this.time.addEvent({
   delay: 1200,
-  callback: function() {
+  callback: () => {
     let enemy = null;
 
     if (Phaser.Math.Between(0, 10) >= 3) {
@@ -203,7 +203,7 @@ class SceneMain extends Phaser.Scene {
   	
 
     for (let i = 0; i < this.enemies.getChildren().length; i++) {
-        var enemy = this.enemies.getChildren()[i];
+        let enemy = this.enemies.getChildren()[i];
 
         enemy.update();
 
@@ -231,8 +231,8 @@ class SceneMain extends Phaser.Scene {
       });
     }
 
-    for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
-        var laser = this.enemyLasers.getChildren()[i];
+    for (let i = 0; i < this.enemyLasers.getChildren().length; i++) {
+        let laser = this.enemyLasers.getChildren()[i];
         laser.update();
 
         if (laser.x < -laser.displayWidth ||
@@ -254,8 +254,8 @@ class SceneMain extends Phaser.Scene {
         });
       }
 
-    for (var i = 0; i < this.playerLasers.getChildren().length; i++) {
-      var laser = this.playerLasers.getChildren()[i];
+    for (let i = 0; i < this.playerLasers.getChildren().length; i++) {
+      let laser = this.playerLasers.getChildren()[i];
       laser.update();
 
       if (laser.x < -laser.displayWidth ||
@@ -268,15 +268,15 @@ class SceneMain extends Phaser.Scene {
       }
     }
 
-    for (var i = 0; i < this.backgrounds.length; i++) {
+    for (let i = 0; i < this.backgrounds.length; i++) {
       this.backgrounds[i].update();
     }
   }
 
   getEnemiesByType(type) {
-    var arr = [];
-    for (var i = 0; i < this.enemies.getChildren().length; i++) {
-      var enemy = this.enemies.getChildren()[i];
+    let arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i++) {
+      let enemy = this.enemies.getChildren()[i];
       if (enemy.getData("type") == type) {
         arr.push(enemy);
       }
