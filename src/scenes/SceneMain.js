@@ -14,6 +14,9 @@ import sndExplode1 from "../content/sndExplode0.wav";
 import sndLaser from "../content/sndLaser.wav";
 
 import Player from "../GameObject/Player";
+import GunShip from "../GameObject/Gunship";
+import CarrierShip from "../GameObject/Carriership";
+import ChaserShip from "../GameObject/Chasership";
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -101,6 +104,24 @@ class SceneMain extends Phaser.Scene {
   this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
   this.keyB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.B);
   this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+  this.enemies = this.add.group();
+  this.enemyLasers = this.add.group();
+  this.playerLasers = this.add.group();
+
+  this.time.addEvent({
+  delay: 1200,
+  callback: function() {
+    var enemy = new GunShip(
+      this,
+      Phaser.Math.Between(0, this.game.config.width),
+      0
+    );
+    this.enemies.add(enemy);
+  },
+  callbackScope: this,
+  loop: true
+});
 
   }
 
