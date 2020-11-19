@@ -17,6 +17,7 @@ import Player from "../GameObject/Player";
 import GunShip from "../GameObject/Gunship";
 import CarrierShip from "../GameObject/Carriership";
 import ChaserShip from "../GameObject/Chasership";
+import ScrollingBackground from "../Layout/ScrollingBackground";
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -84,19 +85,25 @@ class SceneMain extends Phaser.Scene {
     });
 
     this.sfx = {
-	  explosions: [
-	    this.sound.add("sndExplode0"),
-	    this.sound.add("sndExplode1")
-	  ],
-	  laser: this.sound.add("sndLaser")
-	};
+  	  explosions: [
+  	    this.sound.add("sndExplode0"),
+  	    this.sound.add("sndExplode1")
+  	  ],
+  	  laser: this.sound.add("sndLaser")
+  	};
 
-	this.player = new Player(
-	  this,
-	  this.game.config.width * 0.5,
-	  this.game.config.height * 0.5,
-	  "sprPlayer"
-	);
+    this.backgrounds = [];
+    for (var i = 0; i < 5; i++) {
+      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+      this.backgrounds.push(bg);
+    }
+
+  	this.player = new Player(
+  	  this,
+  	  this.game.config.width * 0.5,
+  	  this.game.config.height * 0.5,
+  	  "sprPlayer"
+  	);
 
   this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
   this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -252,6 +259,10 @@ class SceneMain extends Phaser.Scene {
           laser.destroy();
         }
       }
+    }
+
+    for (var i = 0; i < this.backgrounds.length; i++) {
+      this.backgrounds[i].update();
     }
   }
 
