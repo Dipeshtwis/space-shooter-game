@@ -161,31 +161,34 @@ class SceneMain extends Phaser.Scene {
   }
 
   update(){
-  	this.player.update();
+    if (!this.player.getData("isDead")){
+        this.player.update();
 
-  	if (this.keyW.isDown) {
-  	  this.player.moveUp();
-  	}
-  	else if (this.keyS.isDown) {
-  	  this.player.moveDown();
-  	}
-    else if(this.keyB.isDown){
-      this.player.BoostUp();
-    }
+      if (this.keyW.isDown) {
+        this.player.moveUp();
+      }
+      else if (this.keyS.isDown) {
+        this.player.moveDown();
+      }
+      else if(this.keyB.isDown){
+        this.player.BoostUp();
+      }
 
-  	if (this.keyA.isDown) {
-  	  this.player.moveLeft();
-  	}
-  	else if (this.keyD.isDown) {
-  	  this.player.moveRight();
-  	}
-    if (this.keySpace.isDown) {
-    this.player.setData("isShooting", true);
+      if (this.keyA.isDown) {
+        this.player.moveLeft();
+      }
+      else if (this.keyD.isDown) {
+        this.player.moveRight();
+      }
+      if (this.keySpace.isDown) {
+      this.player.setData("isShooting", true);
+      }
+      else {
+        this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
+        this.player.setData("isShooting", false);
+      }
     }
-    else {
-      this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
-      this.player.setData("isShooting", false);
-    }
+  	
 
     for (let i = 0; i < this.enemies.getChildren().length; i++) {
         var enemy = this.enemies.getChildren()[i];
@@ -214,8 +217,6 @@ class SceneMain extends Phaser.Scene {
         }
       });
     }
-
-    
 
     for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
         var laser = this.enemyLasers.getChildren()[i];
