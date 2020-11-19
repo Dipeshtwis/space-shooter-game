@@ -12,6 +12,7 @@ import sprEnemy2 from "../content/sprEnemy2.png";
 import sndExplode0 from "../content/sndExplode0.wav";
 import sndExplode1 from "../content/sndExplode0.wav";
 import sndLaser from "../content/sndLaser.wav";
+import gameMusic from "../content/gameMusic.mp3";
 
 import Player from "../GameObject/Player";
 import GunShip from "../GameObject/Gunship";
@@ -53,6 +54,7 @@ class SceneMain extends Phaser.Scene {
     this.load.audio("sndExplode0", sndExplode0);
     this.load.audio("sndExplode1", sndExplode1);
     this.load.audio("sndLaser", sndLaser);
+    this.load.audio("gameMusic", gameMusic);
   }
 
   create() {
@@ -89,12 +91,13 @@ class SceneMain extends Phaser.Scene {
   	    this.sound.add("sndExplode0"),
   	    this.sound.add("sndExplode1")
   	  ],
-  	  laser: this.sound.add("sndLaser")
+  	  laser: this.sound.add("sndLaser"),
+      music: this.sound.add("gameMusic")
   	};
 
     this.backgrounds = [];
-    for (var i = 0; i < 5; i++) {
-      var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+    for (let i = 0; i < 5; i++) {
+      let bg = new ScrollingBackground(this, "sprBg0", i * 10);
       this.backgrounds.push(bg);
     }
 
@@ -104,6 +107,8 @@ class SceneMain extends Phaser.Scene {
   	  this.game.config.height * 0.5,
   	  "sprPlayer"
   	);
+
+  this.sfx.music.play();
 
   this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
   this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -119,7 +124,7 @@ class SceneMain extends Phaser.Scene {
   this.time.addEvent({
   delay: 1200,
   callback: function() {
-    var enemy = null;
+    let enemy = null;
 
     if (Phaser.Math.Between(0, 10) >= 3) {
       enemy = new GunShip(
