@@ -4,12 +4,12 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
   },
 
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
   },
   module: {
     rules: [
@@ -19,14 +19,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
-          }
-        }
+            presets: ['env'],
+          },
+        },
       },
       {
-      	test: /\.(png|jpe?g|gif)$/i,
-      	loader: 'file-loader',
-      	options: {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
           outputPath: 'images',
         },
       },
@@ -37,26 +37,26 @@ module.exports = {
           outputPath: 'sounds',
         },
       },
-    ]
+    ],
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'build'),
     compress: true,
     port: 8081,
-    open: true
+    open: true,
   },
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-      {
-        from: path.resolve(__dirname, 'index.html'),
-        to: path.resolve(__dirname, 'build')
-      }
-    ]
-  }),
+        {
+          from: path.resolve(__dirname, 'index.html'),
+          to: path.resolve(__dirname, 'build'),
+        },
+      ],
+    }),
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
-      'typeof WEBGL_RENDERER': JSON.stringify(true)
-    })
-  ]
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
+    }),
+  ],
 };

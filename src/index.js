@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneGameOver from './scenes/SceneGameOver';
@@ -8,21 +7,20 @@ const config = {
   type: Phaser.AUTO,
   width: 480,
   height: 630,
-  backgroundColor: "black",
+  backgroundColor: 'black',
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
-      gravity: { x: 0, y: 0 }
-    }
+      gravity: { x: 0, y: 0 },
+    },
   },
   scene: [
-  SceneMainMenu,
-  SceneMain,
-  SceneGameOver
+    SceneMainMenu,
+    SceneMain,
+    SceneGameOver,
   ],
   pixelArt: true,
-  roundPixels: true
+  roundPixels: true,
 };
 
 const game = new Phaser.Game(config);
-
