@@ -1,11 +1,4 @@
 import Phaser from 'phaser';
-import sprBg0 from '../content/sprBg0.png';
-import sprBg1 from '../content/sprBg1.png';
-import sndBtnOver from '../content/sndBtnOver.wav';
-import sndBtnDown from '../content/sndBtnDown.wav';
-import sprBtnPlay from '../content/sprBtnPlay.png';
-import sprBtnPlayHover from '../content/sprBtnPlayHover.png';
-import sprBtnPlayDown from '../content/sprBtnPlayDown.png';
 
 import ScrollingBackground from '../Layout/ScrollingBackground';
 
@@ -15,14 +8,6 @@ class SceneMainMenu extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sprBg0', sprBg0);
-    this.load.image('sprBg1', sprBg1);
-    this.load.image('sprBtnPlay', sprBtnPlay);
-    this.load.image('sprBtnPlayHover', sprBtnPlayHover);
-    this.load.image('sprBtnPlayDown', sprBtnPlayDown);
-
-    this.load.audio('sndBtnOver', sndBtnOver);
-    this.load.audio('sndBtnDown', sndBtnDown);
   }
 
   create() {
