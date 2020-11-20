@@ -1,0 +1,14 @@
+.element-space {
+	width: 400px;
+	padding: 5rem;
+	margin: 2rem;
+}
+
+.form-control {
+	padding: 1rem;
+}
+
+.submit-btn {
+	padding: 2rem;
+	border-radius: 10px;
+}
