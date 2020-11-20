@@ -6,6 +6,7 @@ import State from './state';
 import listeners from './util/listener';
 import Form from './Layout/form';
 import './assets/css/style.css';
+import BootScene from './scenes/bootScene.js';
 
 const state = new State();
 const config = {
@@ -20,6 +21,7 @@ const config = {
     },
   },
   scene: [
+    BootScene,
     SceneMainMenu,
     SceneMain,
     SceneGameOver,
