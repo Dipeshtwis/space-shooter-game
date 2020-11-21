@@ -15,8 +15,7 @@ const config = {
   type: Phaser.AUTO,
   backgroundColor: 'black',
   scale: {
-    // mode: Phaser.Scale.FIT,
-    width: 480,
+    width: 485,
     height: 630,
   },
   physics: {

@@ -1,9 +1,10 @@
-.submit-btn {
-	width: 40px;
-	padding: 2rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#game {
+.game {
 	position: absolute;
 	top: 200px;
 	left: 140px;

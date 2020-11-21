@@ -22,7 +22,6 @@ class SceneInput extends Phaser.Scene {
     });
 
     this.gameButton = this.add.sprite(220, 390, 'secButton').setInteractive();
-    this.gameButton.className = 'submit-btn';
 
     const nameInput = document.createElement('input');
     nameInput.placeholder = 'Player name';
@@ -57,7 +56,7 @@ class SceneInput extends Phaser.Scene {
         nameInput.style.display = 'none';
         this.scene.start('SceneMain');
       } else {
-        this.alertMsg.setText(`Be real not ghost. Enter name`);
+        this.alertMsg.setText(`Be real not a ghost. Enter name`);
       }
     });
 

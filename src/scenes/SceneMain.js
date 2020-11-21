@@ -81,11 +81,7 @@ class SceneMain extends Phaser.Scene {
 
     this.sfx.music.play();
 
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    this.keyB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.B);
+    this.keyX = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X);
     this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
     this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
     this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -165,17 +161,17 @@ class SceneMain extends Phaser.Scene {
     if (!this.player.getData('isDead')) {
       this.player.update();
 
-      if (this.keyW.isDown || this.keyUp.isDown) {
+      if (this.keyUp.isDown) {
         this.player.moveUp();
-      } else if (this.keyS.isDown || this.keyDown.isDown) {
+      } else if (this.keyDown.isDown) {
         this.player.moveDown();
-      } else if (this.keyB.isDown) {
+      } else if (this.keyX.isDown) {
         this.player.BoostUp();
       }
 
-      if (this.keyA.isDown || this.keyLeft.isDown) {
+      if (this.keyLeft.isDown) {
         this.player.moveLeft();
-      } else if (this.keyD.isDown || this.keyRight.isDown) {
+      } else if (this.keyRight.isDown) {
         this.player.moveRight();
       }
       if (this.keySpace.isDown) {

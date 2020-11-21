@@ -1,6 +1,6 @@
 # space-shooter-game
 
-This is a phaser3 application game where you have to shoot an enemy.
+This is a phaser3 application game where you have to shoot an enemy and make a high score by defeating other player score. There are three types of enemies one who doesn't fire bullet, another which fire, and last one who always follow you to kill.
 
 <div align="center">
 
@@ -14,6 +14,7 @@ This is a phaser3 application game where you have to shoot an enemy.
 
 <p align="center">
 <a href="#with">Built with</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<a href="#play">Game Instructions</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#sc">Screenshot</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#ll">Live Demo Link</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#gs">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -25,10 +26,34 @@ This is a phaser3 application game where you have to shoot an enemy.
 - JavaScript
 - Phaser 3
 - HTML 5 and CSS 3
+- Leaderboard API
+
+## How To Play<a name = "play"></a>
+
+```
+
+1. Use up arrow key to move up
+2. Use down arrow key to go down
+3. Use left arrow key to go left
+4. Use right arrow ket to go right
+
+Bonus::
+
+5. Use X for Boost up
+```
+
 
 ## Project Screenshot <a name = "sc"></a>
 
-![Release Soon](dist/assets/img/Screenshot_1.png)
+![Main Menu](src/assets/img/menu.png)
+
+![Name Section](src/assets/img/name.png)
+
+![Leaderboard](src/assets/img/board.png)
+
+![Game Play](src/assets/img/play.png)
+
+![Game Over](src/assets/img/over.png)
 
 
 ## Live Demo Link <a name = "ll"></a>
