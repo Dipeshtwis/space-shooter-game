@@ -9,6 +9,7 @@ import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneInput from './scenes/SceneInput';
 import SceneMain from './scenes/SceneMain';
 import SceneGameOver from './scenes/SceneGameOver';
+import SceneLeaderBoard from './scenes/SceneLeaderBoard';
 
 const config = {
   type: Phaser.AUTO,
@@ -31,6 +32,7 @@ const config = {
     SceneInput,
     SceneMain,
     SceneGameOver,
+    SceneLeaderBoard,
   ],
   pixelArt: true,
   roundPixels: true,

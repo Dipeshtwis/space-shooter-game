@@ -17,7 +17,7 @@ class SceneMainMenu extends Phaser.Scene {
     };
 
     this.btnPlay = this.add.sprite(
-      this.game.config.width * 0.5,
+      220,
       this.game.config.height * 0.5,
       'sprBtnPlay',
     );
@@ -53,6 +53,15 @@ class SceneMainMenu extends Phaser.Scene {
 
     this.title.setOrigin(0.5);
 
+    this.LeaderboardButton = this.add.sprite(230, 500, 'secButton').setInteractive();
+
+    this.gameText = this.add.text(0, 0, 'Leaderboard', { fontSize: '25px', fill: '#fff' });
+    this.centerButtonText(this.gameText, this.LeaderboardButton);
+
+    this.LeaderboardButton.on('pointerdown', () => {
+      this.scene.start('SceneLeaderBoard');
+    });
+
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['sprBg0', 'sprBg1'];
@@ -66,6 +75,21 @@ class SceneMainMenu extends Phaser.Scene {
     for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
     }
+  }
+
+  centerButton(gameObject, offset = 0) {
+    Phaser.Display.Align.In.Center(
+      gameObject,
+      this.add.zone(this.game.config.width / 2, this.game.config.height / 2 - offset * 100,
+        this.game.config.width, this.game.config.height),
+    );
+  }
+
+  centerButtonText(gameText, gameButton) {
+    Phaser.Display.Align.In.Center(
+      gameText,
+      gameButton,
+    );
   }
 }
 
