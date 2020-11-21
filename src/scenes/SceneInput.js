@@ -47,7 +47,9 @@ class SceneInput extends Phaser.Scene {
         color: 'red',
       });
 
-    this.gameText = this.add.text(0, 0, 'Start', { width: '50px', height: '50px', fontSize: '32px', fill: '#fff' });
+    this.gameText = this.add.text(0, 0, 'Start', {
+      width: '50px', height: '50px', fontSize: '32px', fill: '#fff',
+    });
     this.centerButtonText(this.gameText, this.gameButton);
 
     this.gameButton.on('pointerdown', () => {
@@ -56,7 +58,7 @@ class SceneInput extends Phaser.Scene {
         nameInput.style.display = 'none';
         this.scene.start('SceneMain');
       } else {
-        this.alertMsg.setText(`Be real not a ghost. Enter name`);
+        this.alertMsg.setText('Be real not a ghost. Enter name');
       }
     });
 
@@ -77,6 +79,7 @@ class SceneInput extends Phaser.Scene {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   centerButtonText(gameText, gameButton) {
     Phaser.Display.Align.In.Center(
       gameText,

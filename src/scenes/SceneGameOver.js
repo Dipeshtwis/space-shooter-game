@@ -12,7 +12,7 @@ class SceneGameOver extends Phaser.Scene {
   }
 
   create() {
-     this.sfx = {
+    this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
     };
 
@@ -119,8 +119,7 @@ class SceneGameOver extends Phaser.Scene {
   checkForHighScore() {
     if (this.myScore > this.savedScore) {
       this.highScor.setText('CONGRATS ON NEW HIGH SCORE!! 😄');
-    }
-    else {
+    } else {
       this.highScor.setText('Nice Play but not a high score. 😔');
     }
   }
@@ -133,6 +132,7 @@ class SceneGameOver extends Phaser.Scene {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   centerButtonText(gameText, gameButton) {
     Phaser.Display.Align.In.Center(
       gameText,

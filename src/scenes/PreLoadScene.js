@@ -20,18 +20,17 @@ import secButton from '../content/secButton.png';
 import sndBtnOver from '../content/sndBtnOver.wav';
 import sndBtnDown from '../content/sndBtnDown.wav';
 import sndExplode0 from '../content/sndExplode0.wav';
-import sndExplode1 from '../content/sndExplode0.wav';
+import sndExplode1 from '../content/sndExplode1.wav';
 import sndLaser from '../content/sndLaser.wav';
 import gameMusic from '../content/gameMusic.mp3';
-
 
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
     super({ key: 'PreLoad' });
   }
 
-  init () {
-  this.readyCount = 0;
+  init() {
+    this.readyCount = 0;
   }
 
   preload() {
@@ -86,14 +85,14 @@ export default class PreloadScene extends Phaser.Scene {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    this.load.on('complete', function (){
+    this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
       this.ready();
-    }.bind(this));
+    });
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
@@ -142,8 +141,8 @@ export default class PreloadScene extends Phaser.Scene {
   create() {
     this.scene.start('SceneMainMenu');
   }
- 
-  ready () {
+
+  ready() {
     this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('SceneMainMenu');

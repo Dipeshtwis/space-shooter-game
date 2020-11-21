@@ -10,7 +10,7 @@ class SceneLeaderBoard extends Phaser.Scene {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
     };
-    
+
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'LEADERBOARD', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -75,11 +75,11 @@ class SceneLeaderBoard extends Phaser.Scene {
 
     if (Array.isArray(resultObject.result)) {
       this.scores = resultObject.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
-      this.score1.setText(`${1.}  ${this.scores[0].user} ➡️ ${this.scores[0].score}`);
-      this.score2.setText(`${2.}  ${this.scores[1].user} ➡️ ${this.scores[1].score}`);
-      this.score3.setText(`${3.}  ${this.scores[2].user} ➡️ ${this.scores[2].score}`);
-      this.score4.setText(`${4.}  ${this.scores[3].user} ➡️ ${this.scores[3].score}`);
-      this.score5.setText(`${5.}  ${this.scores[4].user} ➡️ ${this.scores[4].score}`);
+      this.score1.setText(`${1.0}  ${this.scores[0].user} ➡️ ${this.scores[0].score}`);
+      this.score2.setText(`${2.0}  ${this.scores[1].user} ➡️ ${this.scores[1].score}`);
+      this.score3.setText(`${3.0}  ${this.scores[2].user} ➡️ ${this.scores[2].score}`);
+      this.score4.setText(`${4.0}  ${this.scores[3].user} ➡️ ${this.scores[3].score}`);
+      this.score5.setText(`${5.0}  ${this.scores[4].user} ➡️ ${this.scores[4].score}`);
     } else {
       this.score1.setText(resultObject);
     }
@@ -88,9 +88,9 @@ class SceneLeaderBoard extends Phaser.Scene {
   centerButton(gameObject, offset = 0) {
     Phaser.Display.Align.In.Center(
       gameObject,
-      this.add.zone(config.width / 2,
-        config.height / 2 - offset * 100,
-        config.width, config.height),
+      this.add.zone(this.game.config.width / 2,
+        this.game.config.height / 2 - offset * 100,
+        this.game.config.width, this.game.config.height),
     );
   }
 

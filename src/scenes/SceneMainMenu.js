@@ -86,6 +86,7 @@ class SceneMainMenu extends Phaser.Scene {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   centerButtonText(gameText, gameButton) {
     Phaser.Display.Align.In.Center(
       gameText,

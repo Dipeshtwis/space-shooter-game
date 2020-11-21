@@ -53,7 +53,7 @@ class SceneMain extends Phaser.Scene {
         this.sound.add('sndExplode1'),
       ],
       laser: this.sound.add('sndLaser'),
-      music: this.sound.add('gameMusic', { volume: 0.06}),
+      music: this.sound.add('gameMusic', { volume: 0.06 }),
     };
 
     this.textScore = this.add.text(
@@ -183,7 +183,6 @@ class SceneMain extends Phaser.Scene {
 
       localStorage.setItem('gameScore', this.score);
     }
-
 
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];

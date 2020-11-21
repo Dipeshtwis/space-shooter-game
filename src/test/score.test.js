@@ -3,7 +3,7 @@ const score = require('../util/score');
 test('it return the integer type of score', () => {
   const scor = 100;
   const res = score(scor, 450);
-  expect(typeof res).toEqual("number");
+  expect(typeof res).toEqual('number');
 });
 
 test('it returns the score value', () => {
