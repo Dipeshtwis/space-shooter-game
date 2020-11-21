@@ -12,6 +12,7 @@ import sprLaserPlayer from '../content/sprLaserPlayer.png';
 import sprPlayer from '../content/sprPlayer.png';
 import sprExplosion from '../content/sprExplosion.png';
 import sprEnemy2 from '../content/sprEnemy2.png';
+import secButton from '../content/secButton.png';
 
 import sndBtnOver from '../content/sndBtnOver.wav';
 import sndBtnDown from '../content/sndBtnDown.wav';
@@ -24,6 +25,10 @@ import gameMusic from '../content/gameMusic.mp3';
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
     super({ key: 'PreLoad' });
+  }
+
+  init () {
+  this.readyCount = 0;
   }
 
   preload() {
@@ -97,6 +102,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('sprBtnPlay', sprBtnPlay);
     this.load.image('sprBtnPlayHover', sprBtnPlayHover);
     this.load.image('sprBtnPlayDown', sprBtnPlayDown);
+    this.load.image('secButton', secButton);
 
     this.load.audio('sndBtnOver', sndBtnOver);
     this.load.audio('sndBtnDown', sndBtnDown);
@@ -130,15 +136,11 @@ export default class PreloadScene extends Phaser.Scene {
   create() {
     this.scene.start('SceneMainMenu');
   }
-
-  init () {
-  this.readyCount = 0;
-  }
  
   ready () {
-    this.readyCount++;
+    this.readyCount += 1;
     if (this.readyCount === 2) {
-      this.scene.start('Title');
+      this.scene.start('SceneMainMenu');
     }
   }
 }

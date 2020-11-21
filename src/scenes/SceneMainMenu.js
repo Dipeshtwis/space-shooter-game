@@ -30,7 +30,7 @@ class SceneMainMenu extends Phaser.Scene {
     }, this);
 
     this.btnPlay.on('pointerout', () => {
-      this.setTexture('sprBtnPlay');
+      this.btnPlay.setTexture('sprBtnPlay');
     });
 
     this.btnPlay.on('pointerdown', () => {
@@ -40,7 +40,7 @@ class SceneMainMenu extends Phaser.Scene {
 
     this.btnPlay.on('pointerup', () => {
       this.btnPlay.setTexture('sprBtnPlay');
-      this.scene.start('SceneMain');
+      this.scene.start('SceneInput');
     }, this);
 
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'SPACE SHOOTER', {

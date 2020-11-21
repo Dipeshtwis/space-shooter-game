@@ -1,14 +1,21 @@
-.element-space {
-	width: 400px;
-	padding: 5rem;
-	margin: 2rem;
-}
-
-.form-control {
-	padding: 1rem;
-}
-
 .submit-btn {
+	width: 40px;
 	padding: 2rem;
-	border-radius: 10px;
+}
+
+#game {
+	position: absolute;
+	top: 200px;
+	left: 140px;
+}
+
+.username {
+	border-radius: 15px;
+	width: 10rem;
+	padding: .4rem;
+	transition: all 0.5s;
+}
+
+.username:focus {
+	width: 15rem;
 }
