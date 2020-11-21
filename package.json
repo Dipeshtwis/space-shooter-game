@@ -6,6 +6,7 @@
   "author": "Dipeshtwis <deepesh.97kumar@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
     "babel-core": "6",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^7.0.0",

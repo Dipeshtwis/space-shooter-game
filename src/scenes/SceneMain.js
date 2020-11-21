@@ -6,6 +6,7 @@ import CarrierShip from '../GameObject/Carriership';
 import ChaserShip from '../GameObject/Chasership';
 import ScrollingBackground from '../Layout/ScrollingBackground';
 import score from '../util/score';
+import { getScores } from '../util/APIScore';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -143,11 +144,24 @@ class SceneMain extends Phaser.Scene {
         playerLaser.destroy();
       }
     });
+    this.topScore();
   }
 
   addScore(amount) {
     this.score = score(this.score, amount);
     this.textScore.setText(`Score: ${this.score}`);
+  }
+
+  async topScore() {
+    const resultObject = await getScores();
+
+    if (Array.isArray(resultObject.result)) {
+      this.scores = resultObject.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
+
+      for (let i = 0; i < 1; i += 1) {
+        localStorage.setItem('highScore', this.scores[0].score);
+      }
+    }
   }
 
   update() {

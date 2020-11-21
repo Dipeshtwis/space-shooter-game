@@ -1,28 +1,17 @@
 import Phaser from 'phaser';
-import sprBg0 from '../content/sprBg0.png';
-import sprBg1 from '../content/sprBg1.png';
-import sndBtnOver from '../content/sndBtnOver.wav';
-import sndBtnDown from '../content/sndBtnDown.wav';
-import sprBtnRestart from '../content/sprBtnRestart.png';
-import sprBtnRestartHover from '../content/sprBtnRestartHover.png';
-import sprBtnRestartDown from '../content/sprBtnRestartDown.png';
 
 import ScrollingBackground from '../Layout/ScrollingBackground';
+import { sendScore } from '../util/APIScore';
 
 class SceneGameOver extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneGameOver' });
+    this.gameScore = 0;
+    this.myScore = 0;
+    this.savedScore = 0;
   }
 
   preload() {
-    this.load.image('sprBg0', sprBg0);
-    this.load.image('sprBg1', sprBg1);
-    this.load.image('sprBtnRestart', sprBtnRestart);
-    this.load.image('sprBtnRestartHover', sprBtnRestartHover);
-    this.load.image('sprBtnRestartDown', sprBtnRestartDown);
-
-    this.load.audio('sndBtnOver', sndBtnOver);
-    this.load.audio('sndBtnDown', sndBtnDown);
   }
 
   create() {
@@ -34,6 +23,35 @@ class SceneGameOver extends Phaser.Scene {
       align: 'center',
     });
     this.title.setOrigin(0.5);
+
+    this.gameScore = localStorage.getItem('gameScore');
+    this.myScore = parseInt(this.gameScore, 10);
+    this.highScore = localStorage.getItem('highScore');
+    this.savedScore = parseInt(this.highScore, 10);
+    this.playerName = localStorage.getItem('playerName');
+
+    this.textScore = this.add.text(
+      80,
+      200,
+      `Your Score: ${this.gameScore}`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 30,
+        color: '#fff',
+      },
+    );
+
+    this.highScor = this.add.text(
+      20,
+      370,
+      ' ',
+      {
+        fontFamily: 'monospace',
+        fontSize: 24,
+        color: 'green',
+        align: 'center',
+      },
+    );
 
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
@@ -53,7 +71,7 @@ class SceneGameOver extends Phaser.Scene {
     }, this);
 
     this.btnRestart.on('pointerout', () => {
-      this.setTexture('sprBtnRestart');
+      this.btnRestart.setTexture('sprBtnRestart');
     });
 
     this.btnRestart.on('pointerdown', () => {
@@ -65,6 +83,9 @@ class SceneGameOver extends Phaser.Scene {
       this.btnRestart.setTexture('sprBtnRestart');
       this.scene.start('SceneMain');
     }, this);
+
+    this.checkForHighScore();
+    sendScore(this.playerName, this.gameScore);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
@@ -78,6 +99,15 @@ class SceneGameOver extends Phaser.Scene {
   update() {
     for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
+    }
+  }
+
+  checkForHighScore() {
+    if (this.myScore > this.savedScore) {
+      this.highScor.setText('CONGRATS ON NEW HIGH SCORE!!');
+    }
+    else {
+      this.highScor.setText('Nice Play but not a high score');
     }
   }
 }
