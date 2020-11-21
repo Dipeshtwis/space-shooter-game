@@ -11,10 +11,11 @@ class SceneGameOver extends Phaser.Scene {
     this.savedScore = 0;
   }
 
-  preload() {
-  }
-
   create() {
+     this.sfx = {
+      btnOver: this.sound.add('sndBtnOver'),
+    };
+
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -31,7 +32,7 @@ class SceneGameOver extends Phaser.Scene {
     this.playerName = localStorage.getItem('playerName');
 
     this.textScore = this.add.text(
-      80,
+      100,
       200,
       `Your Score: ${this.gameScore}`,
       {
@@ -42,7 +43,7 @@ class SceneGameOver extends Phaser.Scene {
     );
 
     this.highScor = this.add.text(
-      20,
+      15,
       370,
       ' ',
       {
@@ -87,6 +88,19 @@ class SceneGameOver extends Phaser.Scene {
     this.checkForHighScore();
     sendScore(this.playerName, this.gameScore);
 
+    this.mainMenuButton = this.add.sprite(220, 600, 'secButton').setInteractive();
+
+    this.gameText = this.add.text(0, 0, 'Go to Main Menu', { fontSize: '22px', fill: '#fff' });
+    this.centerButtonText(this.gameText, this.mainMenuButton);
+
+    this.mainMenuButton.on('pointerover', () => {
+      this.sfx.btnOver.play();
+    }, this);
+
+    this.mainMenuButton.on('pointerdown', () => {
+      this.scene.start('SceneMainMenu');
+    });
+
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       const keys = ['sprBg0', 'sprBg1'];
@@ -104,11 +118,26 @@ class SceneGameOver extends Phaser.Scene {
 
   checkForHighScore() {
     if (this.myScore > this.savedScore) {
-      this.highScor.setText('CONGRATS ON NEW HIGH SCORE!!');
+      this.highScor.setText('CONGRATS ON NEW HIGH SCORE!! 😄');
     }
     else {
-      this.highScor.setText('Nice Play but not a high score');
+      this.highScor.setText('Nice Play but not a high score. 😔');
     }
+  }
+
+  centerButton(gameObject, offset = 0) {
+    Phaser.Display.Align.In.Center(
+      gameObject,
+      this.add.zone(this.game.config.width / 2, this.game.config.height / 2 - offset * 100,
+        this.game.config.width, this.game.config.height),
+    );
+  }
+
+  centerButtonText(gameText, gameButton) {
+    Phaser.Display.Align.In.Center(
+      gameText,
+      gameButton,
+    );
   }
 }
 

@@ -7,9 +7,6 @@ class SceneMainMenu extends Phaser.Scene {
     super({ key: 'SceneMainMenu' });
   }
 
-  preload() {
-  }
-
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
@@ -17,7 +14,7 @@ class SceneMainMenu extends Phaser.Scene {
     };
 
     this.btnPlay = this.add.sprite(
-      220,
+      230,
       this.game.config.height * 0.5,
       'sprBtnPlay',
     );
@@ -57,6 +54,10 @@ class SceneMainMenu extends Phaser.Scene {
 
     this.gameText = this.add.text(0, 0, 'Leaderboard', { fontSize: '25px', fill: '#fff' });
     this.centerButtonText(this.gameText, this.LeaderboardButton);
+
+    this.LeaderboardButton.on('pointerover', () => {
+      this.sfx.btnOver.play();
+    }, this);
 
     this.LeaderboardButton.on('pointerdown', () => {
       this.scene.start('SceneLeaderBoard');

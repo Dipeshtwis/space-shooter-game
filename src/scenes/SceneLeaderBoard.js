@@ -7,6 +7,10 @@ class SceneLeaderBoard extends Phaser.Scene {
   }
 
   create() {
+    this.sfx = {
+      btnOver: this.sound.add('sndBtnOver'),
+    };
+    
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'LEADERBOARD', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -50,12 +54,16 @@ class SceneLeaderBoard extends Phaser.Scene {
       align: 'center',
     });
 
-    this.gameButton = this.add.sprite(220, 600, 'secButton').setInteractive();
+    this.backButton = this.add.sprite(220, 600, 'secButton').setInteractive();
 
     this.gameText = this.add.text(0, 0, 'Back', { fontSize: '32px', fill: '#fff' });
-    this.centerButtonText(this.gameText, this.gameButton);
+    this.centerButtonText(this.gameText, this.backButton);
 
-    this.gameButton.on('pointerdown', () => {
+    this.backButton.on('pointerover', () => {
+      this.sfx.btnOver.play();
+    }, this);
+
+    this.backButton.on('pointerdown', () => {
       this.scene.start('SceneMainMenu');
     });
 

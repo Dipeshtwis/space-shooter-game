@@ -18,9 +18,6 @@ class SceneMain extends Phaser.Scene {
     this.addvalue = 0;
   }
 
-  preload() {
-  }
-
   create() {
     this.anims.create({
       key: 'sprEnemy0',
