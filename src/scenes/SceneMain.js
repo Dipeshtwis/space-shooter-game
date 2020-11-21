@@ -5,10 +5,16 @@ import GunShip from '../GameObject/Gunship';
 import CarrierShip from '../GameObject/Carriership';
 import ChaserShip from '../GameObject/Chasership';
 import ScrollingBackground from '../Layout/ScrollingBackground';
+import score from '../util/score';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneMain' });
+  }
+
+  init() {
+    this.score = 0;
+    this.addvalue = 0;
   }
 
   preload() {
@@ -49,8 +55,18 @@ class SceneMain extends Phaser.Scene {
         this.sound.add('sndExplode1'),
       ],
       laser: this.sound.add('sndLaser'),
-      music: this.sound.add('gameMusic'),
+      music: this.sound.add('gameMusic', { volume: 0.06}),
     };
+
+    this.textScore = this.add.text(
+      5,
+      10,
+      `Score: ${this.score}`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 20,
+      },
+    );
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
@@ -60,8 +76,8 @@ class SceneMain extends Phaser.Scene {
 
     this.player = new Player(
       this,
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.width * 0.6,
+      this.game.config.height * 0.8,
       'sprPlayer',
     );
 
@@ -72,6 +88,10 @@ class SceneMain extends Phaser.Scene {
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keyB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.B);
+    this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+    this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+    this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+    this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
@@ -125,21 +145,26 @@ class SceneMain extends Phaser.Scene {
     });
   }
 
+  addScore(amount) {
+    this.score = score(this.score, amount);
+    this.textScore.setText(`Score: ${this.score}`);
+  }
+
   update() {
     if (!this.player.getData('isDead')) {
       this.player.update();
 
-      if (this.keyW.isDown) {
+      if (this.keyW.isDown || this.keyUp.isDown) {
         this.player.moveUp();
-      } else if (this.keyS.isDown) {
+      } else if (this.keyS.isDown || this.keyDown.isDown) {
         this.player.moveDown();
       } else if (this.keyB.isDown) {
         this.player.BoostUp();
       }
 
-      if (this.keyA.isDown) {
+      if (this.keyA.isDown || this.keyLeft.isDown) {
         this.player.moveLeft();
-      } else if (this.keyD.isDown) {
+      } else if (this.keyD.isDown || this.keyRight.isDown) {
         this.player.moveRight();
       }
       if (this.keySpace.isDown) {
@@ -148,6 +173,8 @@ class SceneMain extends Phaser.Scene {
         this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
         this.player.setData('isShooting', false);
       }
+
+      localStorage.setItem('gameScore', this.score);
     }
 
 
