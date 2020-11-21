@@ -36,6 +36,7 @@ This is a phaser3 application game where you have to shoot an enemy and make a h
 2. Use down arrow key to go down
 3. Use left arrow key to go left
 4. Use right arrow ket to go right
+5. Use Space to fire the bullet
 
 Bonus::
 
@@ -58,7 +59,7 @@ Bonus::
 
 ## Live Demo Link <a name = "ll"></a>
 
-[Coming soon]()
+[Link For Play](https://spaceshootergame.netlify.app/)
 
 
 ## Getting Started <a name = "gs"></a>

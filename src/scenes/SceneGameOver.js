@@ -43,7 +43,7 @@ class SceneGameOver extends Phaser.Scene {
     );
 
     this.highScor = this.add.text(
-      15,
+      10,
       370,
       ' ',
       {
