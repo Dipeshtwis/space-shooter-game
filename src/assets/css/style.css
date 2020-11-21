@@ -5,18 +5,18 @@
 }
 
 .game {
-	position: absolute;
-	top: 200px;
-	left: 140px;
+  position: absolute;
+  top: 200px;
+  left: 140px;
 }
 
 .username {
-	border-radius: 15px;
-	width: 10rem;
-	padding: .4rem;
-	transition: all 0.5s;
+  border-radius: 15px;
+  width: 10rem;
+  padding: .4rem;
+  transition: all 0.5s;
 }
 
 .username:focus {
-	width: 15rem;
+  width: 15rem;
 }
