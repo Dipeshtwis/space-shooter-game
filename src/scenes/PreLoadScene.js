@@ -5,6 +5,9 @@ import sprBg1 from '../content/sprBg1.png';
 import sprBtnPlay from '../content/sprBtnPlay.png';
 import sprBtnPlayHover from '../content/sprBtnPlayHover.png';
 import sprBtnPlayDown from '../content/sprBtnPlayDown.png';
+import sprBtnRestart from '../content/sprBtnRestart.png';
+import sprBtnRestartHover from '../content/sprBtnRestartHover.png';
+import sprBtnRestartDown from '../content/sprBtnRestartDown.png';
 import sprEnemy0 from '../content/sprEnemy0.png';
 import sprEnemy1 from '../content/sprEnemy1.png';
 import sprLaserEnemy0 from '../content/sprLaserEnemy0.png';
@@ -102,6 +105,9 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image('sprBtnPlay', sprBtnPlay);
     this.load.image('sprBtnPlayHover', sprBtnPlayHover);
     this.load.image('sprBtnPlayDown', sprBtnPlayDown);
+    this.load.image('sprBtnRestart', sprBtnRestart);
+    this.load.image('sprBtnRestartHover', sprBtnRestartHover);
+    this.load.image('sprBtnRestartDown', sprBtnRestartDown);
     this.load.image('secButton', secButton);
 
     this.load.audio('sndBtnOver', sndBtnOver);
