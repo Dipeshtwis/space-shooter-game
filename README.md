@@ -92,6 +92,13 @@ $ yarn run webpack serve
 If it will not open automatically, go to http://localhost/8081
 ~~~
 
+## For Testing
+
+~~~bash
+
+$ yarn test
+
+~~~
 
 ## ✒️  Authors <a name = "author"></a>
 
