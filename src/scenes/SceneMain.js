@@ -58,7 +58,6 @@ class SceneMain extends Phaser.Scene {
         this.sound.add('sndExplode1'),
       ],
       laser: this.sound.add('sndLaser'),
-      music: this.sound.add('gameMusic', { volume: 0.06 }),
     };
 
     this.textScore = this.add.text(

@@ -22,7 +22,6 @@ import sndBtnDown from '../content/sndBtnDown.wav';
 import sndExplode0 from '../content/sndExplode0.wav';
 import sndExplode1 from '../content/sndExplode1.wav';
 import sndLaser from '../content/sndLaser.wav';
-import gameMusic from '../content/gameMusic.mp3';
 
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -135,7 +134,6 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
     this.load.audio('sndLaser', sndLaser);
-    this.load.audio('gameMusic', gameMusic);
   }
 
   create() {
