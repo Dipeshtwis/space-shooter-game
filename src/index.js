@@ -18,6 +18,7 @@ const config = {
   type: Phaser.AUTO,
   backgroundColor: 'black',
   scale: {
+    autoCenter: Phaser.Scale.CENTER_BOTH,
     width: 485,
     height: 630,
   },

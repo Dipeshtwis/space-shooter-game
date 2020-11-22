@@ -7,6 +7,7 @@ import ChaserShip from '../GameObject/Chasership';
 import ScrollingBackground from '../Layout/ScrollingBackground';
 import score from '../util/score';
 import { getScores } from '../util/APIScore';
+import game from '../util/gameStatus';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -16,6 +17,10 @@ class SceneMain extends Phaser.Scene {
   init() {
     this.score = 0;
     this.addvalue = 0;
+  }
+
+  preload() {
+    this.gameStatus = game(true);
   }
 
   create() {
@@ -79,8 +84,6 @@ class SceneMain extends Phaser.Scene {
       'sprPlayer',
     );
 
-    this.sfx.music.play();
-
     this.keyX = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X);
     this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
     this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
@@ -135,6 +138,24 @@ class SceneMain extends Phaser.Scene {
         }
         enemy.explode(true);
         playerLaser.destroy();
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead')
+            && !enemy.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        enemy.explode(true);
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+      if (!player.getData('isDead')
+              && !laser.getData('isDead')) {
+        player.explode(false);
+        player.onDestroy();
+        laser.destroy();
       }
     });
     this.topScore();
@@ -201,15 +222,6 @@ class SceneMain extends Phaser.Scene {
           enemy.destroy();
         }
       }
-
-      this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
-        if (!player.getData('isDead')
-            && !enemy.getData('isDead')) {
-          player.explode(false);
-          player.onDestroy();
-          enemy.explode(true);
-        }
-      });
     }
 
     for (let i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
@@ -224,15 +236,6 @@ class SceneMain extends Phaser.Scene {
           laser.destroy();
         }
       }
-
-      this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
-        if (!player.getData('isDead')
-              && !laser.getData('isDead')) {
-          player.explode(false);
-          player.onDestroy();
-          laser.destroy();
-        }
-      });
     }
 
     for (let i = 0; i < this.playerLasers.getChildren().length; i += 1) {
