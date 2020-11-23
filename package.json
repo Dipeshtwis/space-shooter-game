@@ -1,0 +1,33 @@
+{
+  "name": "space-shooter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Dipeshtwis/space-shooter-game.git",
+  "author": "Dipeshtwis <deepesh.97kumar@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "babel-core": "6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^6.3.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.6.3",
+    "webpack": "^5.5.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "phaser": "^3.0.0",
+    "style-loader": "^2.0.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack --watch --mode=development"
+  }
+}
